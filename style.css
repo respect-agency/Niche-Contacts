@@ -1,0 +1,239 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.page {
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #fff5e6, #fffaf3);
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* spotlight (أهدى) */
+.spotlight {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  pointer-events: none;
+
+  background: radial-gradient(
+    circle,
+    rgba(202,146,41,0.15),
+    transparent 70%
+  );
+
+  filter: blur(80px);
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+/* glow */
+.glow {
+  position: absolute;
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, rgba(202,146,41,0.2), transparent);
+  top: -150px;
+  right: -150px;
+  filter: blur(140px);
+}
+
+.glow2 {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(202,146,41,0.1), transparent);
+  bottom: -150px;
+  left: -150px;
+  filter: blur(140px);
+}
+
+/* pattern */
+.pattern {
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-radial-gradient(
+      circle,
+      rgba(202,146,41,0.05) 0px,
+      rgba(202,146,41,0.05) 1px,
+      transparent 1px,
+      transparent 25px
+    );
+  opacity: 0.3;
+  transition: 0.4s;
+}
+
+/* grain */
+.grain {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("https://www.transparenttextures.com/patterns/noise.png");
+  opacity: 0.06;
+  mix-blend-mode: soft-light;
+  z-index: 1;
+}
+
+/* content */
+.content {
+  position: relative;
+  z-index: 2;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  padding: 60px 20px;
+}
+
+/* center */
+.center {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* logo */
+.logo {
+  width: clamp(200px, 35vw, 260px);
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* links */
+.links {
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto 40px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+/* glass cards */
+.card {
+  position: relative;
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  padding: 20px;
+  border-radius: 18px;
+
+  font-size: 18px;
+  text-decoration: none;
+  color: #2a2a2a;
+
+  background: rgba(255,255,255,0.25);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  border: 1px solid rgba(255,255,255,0.4);
+
+  box-shadow:
+    0 8px 30px rgba(0,0,0,0.05),
+    inset 0 1px 0 rgba(255,255,255,0.4);
+
+  transition: 0.25s ease;
+  transform-style: preserve-3d;
+}
+
+/* reflection */
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, rgba(255,255,255,0.4), transparent 40%);
+  opacity: 0.3;
+}
+
+/* hover */
+.card:hover {
+  transform: translateY(-6px) scale(1.02);
+  background: rgba(202,146,41,0.15);
+  border: 1px solid rgba(202,146,41,0.4);
+
+  box-shadow:
+    0 12px 40px rgba(202,146,41,0.15),
+    inset 0 1px 0 rgba(255,255,255,0.5);
+}
+
+/* arrow */
+.arrow {
+  margin-left: auto;
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: 0.3s ease;
+}
+
+.card:hover .arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* icon */
+.card i {
+  color: #ca9229;
+  transition: 0.25s;
+}
+
+.card:hover i {
+  transform: scale(1.1);
+}
+
+.logo-wrapper {
+  text-align: center;
+}
+
+/* 🔥 slogan */
+.slogan {
+  margin-top: 16px;
+  margin-bottom: 32px;
+
+  font-size: 24px;
+  letter-spacing: 2px;
+
+  color: rgba(0,0,0,0.6);
+
+  font-weight: 300;
+
+  opacity: 0.8;
+
+  transition: 0.3s ease;
+}
+
+.slogan {
+  font-family: "Playfair Display", serif;
+  font-style: italic;
+  letter-spacing: 3px;
+
+  background: linear-gradient(90deg, #ca9229, #b07f22);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  opacity: 0.9;
+   opacity: 0;
+  transform: translateY(10px);
+  animation: fadeSlogan 1s ease forwards;
+  animation-delay: 0.4s;
+}
+
+@keyframes fadeSlogan {
+  to {
+    opacity: 0.9;
+    transform: translateY(0);
+  }
+}
